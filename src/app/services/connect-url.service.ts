@@ -8,9 +8,10 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
+
 export class ConnectUrlService {
 
-  API_URL = 'http://localhost:3000/api';
+  API_URL = 'https://backend-despliegueoficial.herokuapp.com/api';
 
   constructor(private http: HttpClient ) { 
   }
