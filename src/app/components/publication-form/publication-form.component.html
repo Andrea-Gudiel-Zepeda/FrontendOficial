@@ -1,6 +1,7 @@
+<app-navigation></app-navigation>
 <div style="display: flex;">
 
-    <div class="col-md-4 offset-md-2">
+    <div class="col-md-4 offset-md-2" style="margin-top: 50px;">
         <div class="card">
             <div class="card-body">
                 <form action="">
@@ -26,7 +27,7 @@
         </div>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-4" style="margin-top: 50px;">
         <div class="card card-body text-center">
             <img [src]="publication.image">
             <h3>{{publication.id_publication}}. {{publication.title == '' ? 'Título' : publication.title}}</h3>

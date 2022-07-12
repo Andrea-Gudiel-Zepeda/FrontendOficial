@@ -3,6 +3,7 @@ import { Component, HostBinding, OnInit } from '@angular/core';
 import { ConnectUrlService } from '../../services/connect-url.service';
 import { ActivatedRoute,Router } from '@angular/router';
 import { Login } from '../../models/Login';
+import { AuthService } from '@auth0/auth0-angular'
 
 
 @Component({
@@ -21,12 +22,24 @@ export class LoginComponent implements OnInit {
   users: any = [];
   isLoggedIn: boolean = true;
 
-  constructor(private connectUrlService: ConnectUrlService, private route: Router) { }
+  constructor(private connectUrlService: ConnectUrlService, private route: Router, public auth: AuthService) { }
 
   ngOnInit(): void {
+
     this.getUsers();
+    
+    if(localStorage.getItem('isLoggedInGoogle') == 'true'){
+      this.route.navigate(['/publication']);
+    } 
   }
 
+
+  ingresar(){
+    console.log("Google");
+   
+    localStorage.setItem('isLoggedInGoogle', 'true');
+    this.auth.loginWithRedirect();
+  }
   
   getUsers(){
     this.connectUrlService.getUsers().subscribe(
